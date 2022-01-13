@@ -88,12 +88,10 @@ describe('Lottery Contract', () => {
 
     it('can not choose winner if balance is less than 100 ether', async() => {
         try {
-            for (let i = 0; i < 10; i++) {
-                await lottery.methods.enter().send({
-                    from: accounts[i],
-                    value: web3.utils.toWei('2', 'ether')
-                });
-            }
+            await lottery.methods.enter().send({
+                from: accounts[1],
+                value: web3.utils.toWei('2', 'ether')
+            });
 
             await lottery.methods.pickWinner().call({
                 from: accounts[0]
